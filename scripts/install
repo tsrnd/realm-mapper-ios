@@ -41,8 +41,5 @@ brew tap Homebrew/bundle
 brew bundle
 
 if ! bundle exec pod install; then
-    echo 'Setup cocoapods...'
-    bundle exec pod setup --silent > /dev/null
-    bundle exec pod repo update --silent
-    bundle exec pod install
+    bundle exec pod install --repo-update
 fi
