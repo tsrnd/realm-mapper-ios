@@ -11,6 +11,6 @@ Pod::Spec.new do |s|
     s.ios.frameworks = 'Foundation', 'UIKit'
     s.dependency 'RealmSwift', '~> 2.2'
     s.dependency 'ObjectMapper', '~> 2.2'
-    s.source_files = 'RealmMapper/*.swift'
+    s.source_files = 'Sources/*.swift'
     s.pod_target_xcconfig = { 'SWIFT_VERSION' => '3.1' }
 end
