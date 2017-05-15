@@ -4,7 +4,7 @@ use_frameworks!
 platform :ios, '8.0'
 
 def shared_pods
-    pod 'RealmSwift', '~> 2.4'
+    pod 'RealmSwift', '~> 2.2'
     pod 'ObjectMapper', '~> 2.2'
 end
 
