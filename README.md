@@ -3,17 +3,20 @@
 [![Platform](https://img.shields.io/cocoapods/p/RealmMapper.svg?style=flat)](http://cocoadocs.org/docsets/RealmMapper)
 [![Code Coverage](http://codecov.io/github/zendobk/RealmMapper/coverage.svg?branch=master)](http://codecov.io/github/zendobk/RealmMapper?branch=master)
 
-[RealmMapper](https://github.com/zendobk/RealmMapper)
-============
+[![RealmSwift](https://img.shields.io/badge/RealmSwift-~%3E%202.2-brightgreen.svg)](https://img.shields.io/badge/RealmSwift-~%3E%202.2-brightgreen.svg)
+[![ObjectMapper](https://img.shields.io/badge/ObjectMapper-~%3E%202.2-brightgreen.svg)](https://img.shields.io/badge/ObjectMapper-~%3E%202.2-brightgreen.svg)
+
+Realm + ObjectMapper
+====================
 
 ## Requirements
 
  - iOS 8.0+
- - Xcode 8.2
+ - Xcode 8.3 (Swift 3.1)
 
 ## Installation
 
- > **Embedded frameworks require a minimum deployment target of iOS 8.**
+ > Embedded frameworks require a minimum deployment target of iOS 8
 
 ### CocoaPods
 
@@ -44,40 +47,73 @@ $ pod install
 ## Usage
 
 ### Mapping
+
+**Rule:**
+- Object has `primaryKey` must be StaticMappable (i)
+- Object has no `primaryKey` should be Mappable (ii)
+
 ```swift
 import RealmSwift
 import ObjectMapper
 import RealmMapper
 
-class User: Object, Mappable {
-  dynamic var id: String!
-  dynamic var name: String?
-  dynamic var address: Address?
-  let dogs = List<Dog>()
+final class User: Object, StaticMappable {
+    dynamic var id: String!
+    dynamic var name: String?
+    dynamic var address: Address?
+    let dogs = List<Dog>()
+    
+    override class func primaryKey() -> String? {
+        return "id"
+    }
+    
+    func mapping(map: Map) {
+        name <- map["name"]
+        address <- map["address"]
+        dogs <- map["dogs"]
+    }
+      
+    static func objectForMapping(map: Map) -> BaseMappable? {
+        do {
+            let realm = try Realm()
+            return realm.object(ofType: self, forMapping: map)
+        } catch {
+            return nil
+        }
+    }
+}
 
-  override class func primaryKey() -> String? {
-    return "id"
-  }
+// (ii)
+final class Address: Object, Mappable {
+    dynamic var street = ""
+    dynamic var city = ""
+    dynamic var country = ""
 
-  convenience required init?(_ map: Map) {
-    self.init()
-    id <- map["id"]
-  }
+    dynamic var phone: Phone?
 
-  func mapping(map: Map) {
-    name <- map["name"]
-    address <- map["address"]
-    dogs <- map["dogs"]
-  }
+    let users = LinkingObjects(fromType: User.self, property: "address")
+
+    convenience required init?(map: Map) {
+        self.init()
+    }
+
+    func mapping(map: Map) {
+        street <- map["street"]
+        city <- map["city"]
+        country <- map["country"]
+        phone <- map["phone"]
+    }
 }
 ```
+
 ### Import JSON to Realm
+
 ```swift
 do {
-  let realm = Realm()
+  let realm = try Realm()
   try realm.write {
-    realm.map(User.self, json: jsUser)
-    realm.map(Shop.self, json: jsShops)
+    realm.map(User.self, json: jsUser) // map JSON object
+    realm.map(Shop.self, json: jsShops) // map JSON array
   }
 } catch {
 }
