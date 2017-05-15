@@ -150,7 +150,7 @@ class Tests: XCTestCase {
         do {
             let realm = try Realm()
             try realm.write {
-                try realm.map(User.self, json: jsUser)
+                try realm.map(User.self, json: jsUser, allowUpdates: true)
             }
             guard let userID = jsUser["id"] else { assertionFailure("jsUser has no id"); return }
             if let user = realm.objects(User.self).filter("id = %@", userID).first {
@@ -169,7 +169,7 @@ class Tests: XCTestCase {
         do {
             let realm = try Realm()
             try realm.write {
-                try realm.map(User.self, json: jsUser)
+                try realm.map(User.self, json: jsUser, allowUpdates: true)
             }
             guard let userID = jsUser["id"] else { assertionFailure("jsUser has no id"); return }
             if let user = realm.objects(User.self).filter("id = %@", userID).first {

@@ -34,6 +34,22 @@ extension Realm {
         }
         return obj
     }
+    
+    /**
+     Import JSON as Mappable Object.
+     - parammeter T: Mappable Object.
+     - parameter type: mapped type.
+     - parameter json: JSON type is `[String: AnyObject]`.
+     - returns: mapped object.
+     */
+    @discardableResult
+    public func map<T: Object>(_ type: T.Type, json: JSObject, allowUpdates: Bool) throws -> T where T: Mappable {
+        let obj = try Mapper<T>().map(json)
+        if obj.realm == nil {
+            add(obj, update: allowUpdates)
+        }
+        return obj
+    }
 
     /**
      Import JSON as array of Mappable Object.
