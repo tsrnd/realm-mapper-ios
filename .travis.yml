@@ -17,9 +17,11 @@ env:
     - DESTINATION="OS=10.3,name=iPhone 7"
     - CONFIGURATION='Debug'
 install:
+  - set +e
   - set -o pipefail
   - ./scripts/install
 script:
+  - set -e
   - export REPO_SLUG="$TRAVIS_REPO_SLUG"
   - export SRC_BRANCH="$(./scripts/ci/src_branch)"
   - export PR_NUMBER="$(./scripts/ci/pr_number)"
