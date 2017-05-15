@@ -10,7 +10,7 @@ import RealmSwift
 import ObjectMapper
 @testable import RealmMapper
 
-class User: Object, Mappable {
+final class User: Object, StaticMappable {
     dynamic var id: String!
     dynamic var name: String?
     dynamic var address: Address?
@@ -20,19 +20,23 @@ class User: Object, Mappable {
         return "id"
     }
 
-    convenience required init?(map: Map) {
-        self.init()
-        id <- map["id"]
-    }
-
     func mapping(map: Map) {
         name <- map["name"]
-        try? address <- map["address"]
-        try? dogs <- map["dogs"]
+        address <- map["address"]
+        dogs <- map["dogs"]
+    }
+
+    static func objectForMapping(map: Map) -> BaseMappable? {
+        do {
+            let realm = try Realm()
+            return realm.object(ofType: self, forMapping: map)
+        } catch {
+            return nil
+        }
     }
 }
 
-class Address: Object, Mappable {
+final class Address: Object, Mappable {
     dynamic var street = ""
     dynamic var city = ""
     dynamic var country = ""
@@ -49,18 +53,18 @@ class Address: Object, Mappable {
         street <- map["street"]
         city <- map["city"]
         country <- map["country"]
-        try? phone <- map["phone"]
+        phone <- map["phone"]
     }
 }
 
-class Phone: Object, Mappable {
+final class Phone: Object, Mappable {
     enum PhoneType: String {
-        case Work = "Work"
-        case Home = "Home"
+        case work
+        case home
     }
 
     dynamic var number = ""
-    dynamic var type = PhoneType.Home.rawValue
+    dynamic var type = PhoneType.home.rawValue
 
     let addresses = LinkingObjects(fromType: Address.self, property: "phone")
 
@@ -74,7 +78,7 @@ class Phone: Object, Mappable {
     }
 }
 
-class Dog: Object, Mappable {
+final class Dog: Object, StaticMappable {
     dynamic var id: String!
     dynamic var name: String?
     dynamic var color: String?
@@ -85,13 +89,17 @@ class Dog: Object, Mappable {
         return "id"
     }
 
-    convenience required init?(map: Map) {
-        self.init()
-        id <- map["id"]
-    }
-
     func mapping(map: Map) {
         name <- map["name"]
         color <- map["color"]
+    }
+
+    static func objectForMapping(map: Map) -> BaseMappable? {
+        do {
+            let realm = try Realm()
+            return realm.object(ofType: self, forMapping: map, jsonPrimaryKey: "pk")
+        } catch {
+            return nil
+        }
     }
 }

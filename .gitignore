@@ -64,3 +64,4 @@ fastlane/screenshots
 # Bundler
 vendor
 .bundle
+*.coverage.txt

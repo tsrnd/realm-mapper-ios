@@ -1,29 +1,31 @@
 language: objective-c
-osx_image: xcode7.3
+osx_image: xcode8.3
 cache:
-    - cocoapods
+  bundler: true
+  cocoapods: true
+  directories:
+    - ~/.rvm
+    - ~/.cocoapods
+    - ~/Library/Caches/CocoaPods
+    - .bundle
+    - vendor
 env:
-    global:
-      - WORKSPACE="RealmMapper.xcworkspace"
-      - SCHEME="RealmMapper"
-      - SDK="iphonesimulator9.3"
-    matrix:
-      - DESTINATION="OS=8.1,name=iPhone 6"  POD_LINT="NO"
-      - DESTINATION="OS=9.3,name=iPhone 6"  POD_LINT="YES"
-before_install:
-    - set -o pipefail
-    - gem install xcpretty
-    - gem install cocoapods -v 1.0.0
-    - pod repo update
-    - pod install
+  global:
+    - SDK="iphonesimulator10.3"
+    - SCHEME='RealmMapper'
+    - WORKSPACE='RealmMapper.xcworkspace'
+    - DESTINATION="OS=10.3,name=iPhone 7"
+    - CONFIGURATION='Debug'
+install:
+  - set -o pipefail
+  - ./scripts/install
 script:
-    # test Debug
-    - xcodebuild -workspace "$WORKSPACE" -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" ONLY_ACTIVE_ARCH=YES GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES -configuration Debug build test | xcpretty -c
-    # test Release
-    - xcodebuild -workspace "$WORKSPACE" -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" ONLY_ACTIVE_ARCH=YES GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES -configuration ReleaseTest build test | xcpretty -c
-    # pod lint if needs
-    - if [ $POD_LINT == "YES" ]; then pod lib lint --quick; fi
+  - export REPO_SLUG="$TRAVIS_REPO_SLUG"
+  - export SRC_BRANCH="$(./scripts/ci/src_branch)"
+  - export PR_NUMBER="$(./scripts/ci/pr_number)"
+  - ./scripts/tests/lint
+  - ./scripts/tests/pod
 notifications:
-    email: false
+  email: false
 after_success:
-    - bash <(curl -s https://codecov.io/bash)
+  - ./scripts/ci/codecov

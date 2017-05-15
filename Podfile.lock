@@ -1,20 +1,23 @@
 PODS:
-  - ObjectMapper (2.2.3)
-  - Realm (2.4.3):
-    - Realm/Headers (= 2.4.3)
-  - Realm/Headers (2.4.3)
-  - RealmSwift (2.4.3):
-    - Realm (= 2.4.3)
+  - ObjectMapper (2.2.6)
+  - Realm (2.7.0):
+    - Realm/Headers (= 2.7.0)
+  - Realm/Headers (2.7.0)
+  - RealmSwift (2.7.0):
+    - Realm (= 2.7.0)
+  - SwiftLint (0.17.0)
 
 DEPENDENCIES:
   - ObjectMapper (~> 2.2)
-  - RealmSwift (~> 2.4)
+  - RealmSwift (~> 2.2)
+  - SwiftLint (~> 0.17.0)
 
 SPEC CHECKSUMS:
-  ObjectMapper: d3b3de11267f5d971f390eb8d63dd509116a4329
-  Realm: e08d60b0048ccccd3949c8c28a92c4db5712d7e9
-  RealmSwift: 30d49739ccb3385d201242736ca4dda56aec9dfc
+  ObjectMapper: '042708195cc46c20871cbcbec0453826398273fd'
+  Realm: 07e5d3a9e0e41d65fd5f9f05150ed6295d0f093b
+  RealmSwift: 6d06425d3900c86473c4f323bf6949b43fca22bc
+  SwiftLint: 9fb1dd71d5952d130f8c2fb60ae2e1475cf5d575
 
-PODFILE CHECKSUM: 2d8967c6c823bc095911b4dbee6fa37ec2e5c7d6
+PODFILE CHECKSUM: e7e1ab7679d7ad0cdf51d0c8d4a3127251222eb0
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.2.1
