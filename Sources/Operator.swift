@@ -51,8 +51,9 @@ public func <- <T: Object>(left: List<T>, right: Map) where T: BaseMappable {
     if right.mappingType == MappingType.fromJSON {
         if !right.isKeyPresent { return }
         left.removeAll()
-        guard let json = right.currentValue as? [[String: Any]],
-            let objs = Mapper<T>().mapArray(JSONArray: json) else { return }
+        guard let json = right.currentValue as? [[String: Any]] else { return }
+        let maps: [T]? = Mapper<T>().mapArray(JSONArray: json)
+        guard let objs = maps else { return }
         left.append(objectsIn: objs)
     } else {
         var _left = left
