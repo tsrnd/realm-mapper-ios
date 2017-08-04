@@ -8,12 +8,9 @@
       location = "group:RealmMapper.podspec">
    </FileRef>
    <FileRef
-      location = "group:/Users/Home/dev/repo/RealmMapper/RealmMapper.xcodeproj">
+      location = "group:RealmMapper.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:RealmMapper.xcodeproj">
    </FileRef>
 </Workspace>
