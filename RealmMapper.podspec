@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name   = 'RealmMapper'
-    s.version  = '2.3.1'
+    s.version  = '3.0'
     s.license  = 'MIT'
     s.summary  = 'RealmMapper'
     s.homepage = 'https://github.com/zendobk/RealmMapper'
