@@ -9,7 +9,7 @@ PODS:
 
 DEPENDENCIES:
   - ObjectMapper (~> 2.2)
-  - RealmSwift (~> 3.0.2)
+  - RealmSwift (~> 3.0)
   - SwiftLint (~> 0.17.0)
 
 SPEC CHECKSUMS:
@@ -18,6 +18,6 @@ SPEC CHECKSUMS:
   RealmSwift: 695393add1b8f9d5fa75dd16e6355cf3935f71e2
   SwiftLint: 9fb1dd71d5952d130f8c2fb60ae2e1475cf5d575
 
-PODFILE CHECKSUM: c2cf6b18dbfaf72c5fa7f3e0ff76d1e8d9b6c2d5
+PODFILE CHECKSUM: 042e86280416d2be24903693e6a755e60114760e
 
 COCOAPODS: 1.2.1
