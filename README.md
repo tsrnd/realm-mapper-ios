@@ -1,7 +1,7 @@
-[![Build Status](https://travis-ci.org/zendobk/RealmMapper.svg?branch=master)](https://travis-ci.org/zendobk/RealmMapper)
+[![Build Status](https://travis-ci.org/tsrnd/realm-mapper-ios.svg?branch=master)](https://travis-ci.org/tsrnd/realm-mapper-ios)
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/RealmMapper.svg)](https://img.shields.io/cocoapods/v/RealmMapper.svg)
 [![Platform](https://img.shields.io/cocoapods/p/RealmMapper.svg?style=flat)](http://cocoadocs.org/docsets/RealmMapper)
-[![Code Coverage](http://codecov.io/github/zendobk/RealmMapper/coverage.svg?branch=master)](http://codecov.io/github/zendobk/RealmMapper?branch=master)
+[![Code Coverage](http://codecov.io/github/tsrnd/realm-mapper-ios/coverage.svg?branch=master)](http://codecov.io/github/tsrnd/realm-mapper-ios?branch=master)
 
 [![RealmSwift](https://img.shields.io/badge/RealmSwift-~%3E%202.2-brightgreen.svg)](https://img.shields.io/badge/RealmSwift-~%3E%202.2-brightgreen.svg)
 [![ObjectMapper](https://img.shields.io/badge/ObjectMapper-~%3E%202.2-brightgreen.svg)](https://img.shields.io/badge/ObjectMapper-~%3E%202.2-brightgreen.svg)
