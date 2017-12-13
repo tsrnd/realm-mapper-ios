@@ -5,7 +5,7 @@ if [[ -z "$SDK" ]]; then
     SDK='iphonesimulator10.3'
     SCHEME='RealmMapper'
     WORKSPACE='RealmMapper.xcworkspace'
-    DESTINATION='OS=10.3,name=iPhone 7'
+    DESTINATION='OS=10.3.1,name=iPhone 7'
     CONFIGURATION='Debug'
 fi
 
