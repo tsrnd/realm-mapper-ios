@@ -1,9 +1,10 @@
 [![Build Status](https://travis-ci.org/tsrnd/realm-mapper-ios.svg?branch=master)](https://travis-ci.org/tsrnd/realm-mapper-ios)
-[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/RealmMapper.svg)](https://img.shields.io/cocoapods/v/RealmMapper.svg)
+[![CocoaPods Compatible](https://img.shields.io/badge/pod-v3.0-blue.svg)](https://img.shields.io/badge/pod-v3.0-blue.svg)
+
 [![Platform](https://img.shields.io/cocoapods/p/RealmMapper.svg?style=flat)](http://cocoadocs.org/docsets/RealmMapper)
 [![Code Coverage](http://codecov.io/github/tsrnd/realm-mapper-ios/coverage.svg?branch=master)](http://codecov.io/github/tsrnd/realm-mapper-ios?branch=master)
 
-[![RealmSwift](https://img.shields.io/badge/RealmSwift-~%3E%202.2-brightgreen.svg)](https://img.shields.io/badge/RealmSwift-~%3E%202.2-brightgreen.svg)
+[![RealmSwift](https://img.shields.io/badge/RealmSwift-~%3E%203.0-brightgreen.svg)](https://img.shields.io/badge/RealmSwift-~%3E%203.0-brightgreen.svg)
 [![ObjectMapper](https://img.shields.io/badge/ObjectMapper-~%3E%202.2-brightgreen.svg)](https://img.shields.io/badge/ObjectMapper-~%3E%202.2-brightgreen.svg)
 
 Realm + ObjectMapper
@@ -26,7 +27,7 @@ Realm + ObjectMapper
 $ gem install cocoapods
  ```
 
-> CocoaPods 1.2+ is required to build RealmMapper 2.3+.
+> CocoaPods 1.2+ is required to build RealmMapper 3.0+.
 
 To integrate RealmMapper into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
@@ -35,7 +36,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'RealmMapper', '~> 2.3'
+pod 'RealmMapper', '~> 3.0'
 ```
 
 Then, run the following command:
