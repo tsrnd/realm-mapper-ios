@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/tsrnd/realm-mapper-ios.svg?branch=master)](https://travis-ci.org/tsrnd/realm-mapper-ios)
-[![CocoaPods Compatible](https://img.shields.io/badge/pod-v3.0-blue.svg)](https://img.shields.io/badge/pod-v3.0-blue.svg)
+[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/RealmMapper.svg)](https://img.shields.io/cocoapods/v/RealmMapper.svg)
 
 [![Platform](https://img.shields.io/cocoapods/p/RealmMapper.svg?style=flat)](http://cocoadocs.org/docsets/RealmMapper)
 [![Code Coverage](http://codecov.io/github/tsrnd/realm-mapper-ios/coverage.svg?branch=master)](http://codecov.io/github/tsrnd/realm-mapper-ios?branch=master)
